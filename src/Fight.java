@@ -27,8 +27,8 @@ public class Fight extends Thread {
             while (live) {
                 int hit1 = goblin.attack();
                 int hit2 = hero.attack();
-                hero.setHp(hit1);
-                goblin.setHp(hit2);
+                hero.plusHp(-hit1);
+                goblin.plusHp(-hit2);
 
                 if (hit1 == 0) {
                     System.out.println(goblin.getName() + " Промахнулся!");
@@ -55,8 +55,8 @@ public class Fight extends Thread {
                 if(goblin.getHp() <= 0){
                     System.out.println(goblin.getName() + " пал в бою! Вы победили +" + goblin.getExperience() + " exp +" + goblin.getGold() + " gold");
                     live = false;
-                    hero.setGold(goblin.getGold());
-                    hero.setExperience(goblin.getExperience());
+                    hero.plusGold(goblin.getGold());
+                    hero.plusExperience(goblin.getExperience());
                 }
             }
         } else {
@@ -67,8 +67,8 @@ public class Fight extends Thread {
             while (live) {
                 int hit1 = skeleton.attack();
                 int hit2 = hero.attack();
-                hero.setHp(hit1);
-                skeleton.setHp(hit2);
+                hero.plusHp(-hit1);
+                skeleton.plusHp(-hit2);
 
                 if (hit1 == 0) {
                     System.out.println(skeleton.getName() + " Промахнулся!");
@@ -95,8 +95,8 @@ public class Fight extends Thread {
                 if(skeleton.getHp() <= 0){
                     System.out.println(skeleton.getName() + " пал в бою! Вы победили +" + skeleton.getExperience() + " exp +" + skeleton.getGold() + " gold");
                     live = false;
-                    hero.setGold(skeleton.getGold());
-                    hero.setExperience(skeleton.getExperience());
+                    hero.plusGold(skeleton.getGold());
+                    hero.plusExperience(skeleton.getExperience());
                 }
             }
         }
